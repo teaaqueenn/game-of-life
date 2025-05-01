@@ -4,10 +4,10 @@
 #include <chrono>
 #include <cstdlib>
 
-const int ROWS = 20;
-const int COLS = 40;
+const int ROWS = 26;
+const int COLS = 50;
 const int STEPS = 100;
-const int DELAY_MS = 200;
+const int DELAY_MS = 150;
 
 void printGrid(const Game & game) {
     for (int y = 0; y < game.getRows(); ++y) {
