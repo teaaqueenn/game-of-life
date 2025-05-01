@@ -3,9 +3,9 @@
 
 #include <vector>
 
-class GameOfLife {
+class Game {
 public:
-    GameOfLife(int rows, int cols);
+    Game(int rows, int cols);
     void initializeRandom();
     void update();
     bool isAlive(int row, int col) const;
