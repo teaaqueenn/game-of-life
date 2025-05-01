@@ -1,16 +1,12 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#include "game.h"
+#include <ctime>
 
-using namespace std;
+const int WIDTH = 800;
+const int HEIGHT = 600;
+const int CELL_SIZE = 10;
+const int COLS = WIDTH / CELL_SIZE;
+const int ROWS = HEIGHT / CELL_SIZE;
 
-int main()
-{
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
-
-    for (const string& word : msg)
-    {
-        cout << word << " ";
-    }
-    cout << endl;
+int main() {
+    
 }
