@@ -13,9 +13,15 @@ public:
     int getRows() const { return rows; }
     int getCols() const { return cols; }
 
+    const std::vector<std::pair<int, int>>& getUpdatedCells() const;
+    void clearUpdatedCells();
+    void printGrid() const;
+
 private:
     int rows, cols;
     std::vector<std::vector<bool>> grid;
+    std::vector<std::pair<int, int>> updatedCells;
+    std::vector<std::vector<bool>> prevGrid;  // Track previous grid for comparison
 
     int countLiveNeighbors(int row, int col) const;
 };

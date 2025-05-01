@@ -9,27 +9,31 @@ const int COLS = 50;
 const int STEPS = 100;
 const int DELAY_MS = 150;
 
-void printGrid(const Game & game) {
-    for (int y = 0; y < game.getRows(); ++y) {
-        for (int x = 0; x < game.getCols(); ++x) {
-            std::cout << (game.isAlive(y, x) ? "⬜" : "⬛");
-        }
-        std::cout << '\n';
-    }
+void moveCursorToTop() {
+    std::cout << "\033[H";  // ANSI escape code
 }
 
 int main() {
     std::srand(static_cast<unsigned>(std::time(nullptr)));
-    std::system("chcp 65001 > nul"); 
+    std::system("chcp 65001 > nul");
 
     Game game(ROWS, COLS);
     game.initializeRandom();
 
-    for (int step = 0; step < STEPS; ++step) {
-        system("cls");  // use "cls" on Windows
+    for (int step = 0; step <= STEPS; ++step) {
+        moveCursorToTop();
         std::cout << "Step: " << step << "\n\n";
-        printGrid(game);
+
+        // Update the game
         game.update();
+
+        // If there are updated cells, print the grid
+        const auto& updatedCells = game.getUpdatedCells();
+        if (!updatedCells.empty()) {
+            game.printGrid();
+            game.clearUpdatedCells();
+        }
+
         std::this_thread::sleep_for(std::chrono::milliseconds(DELAY_MS));
     }
 
